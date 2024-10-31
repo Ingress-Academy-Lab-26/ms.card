@@ -1,0 +1,77 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create cards table
+      author: Rahman Baxisli
+      changes:
+        - createTable:
+            tableName: cards
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                  remarks: id of a card
+              - column:
+                  name: pan
+                  type: varchar(16)
+                  constraints:
+                    unique: true
+                    nullable: false
+                  remarks: pan of a card
+              - column:
+                  name: card_holder
+                  type: varchar(64)
+                  constraints:
+                    nullable: false
+                  remarks: card holder of a card
+              - column:
+                  name: balance
+                  type: numeric(16,2)
+                  defaultValue: '0.00'
+                  constraints:
+                    nullable: false
+                  remarks: balance of a card
+              - column:
+                  name: type
+                  type: varchar(16)
+                  constraints:
+                    nullable: false
+                  remarks: type of a card (DEBIT, CREDIT, PREPAID, VIRTUAL, GIFT)
+              - column:
+                  name: brand
+                  type: varchar(16)
+                  constraints:
+                    nullable: false
+                  remarks: brand of a card (VISA, MAESTRO, MASTERCARD, AMERICAN, EXPRESS, DISCOVER)
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValue: now()
+                  constraints:
+                    nullable: false
+                  remarks: creation time of a card
+              - column:
+                  name: status
+                  type: varchar(16)
+                  defaultValue: 'ACTIVE'
+                  constraints:
+                    nullable: false
+                  remarks: status of a card (ACTIVE, BLOCKED, STOLEN, DELETED)
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  defaultValue: now()
+                  constraints:
+                    nullable: false
+                  remarks: update time of a card
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                  remarks: belonging user of a card
+
+          remarks: Table to store information about cards

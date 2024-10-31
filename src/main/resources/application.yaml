@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/ms-card
+    username: username
+    password: password
+
+  jpa:
+    open-in-view: true
+  liquibase:
+    change-log: classpath:liquibase/changelog-master.yml
+
+server:
+  port: 8056
+
+redis:
+  server:
+    urls: redis://localhost:6379
